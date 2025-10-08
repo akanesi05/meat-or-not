@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判定結果</title>
+</head>
+<body>
+    <h1>判定結果</h1>
+    <p>あなたが入力した食べ物は「{{ food_name }}」です。</p>
+    <p>判定結果: 
+        {% if is_meat %}
+            肉です！
+        {% else %}
+            肉ではありません。
+        {% endif %}
+    </p>
+    <a href="{% url 'judge:input' %}">再度判定する</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肉か肉じゃないか 判定アプリ</title>
+</head>
+<body>
+    <h1>食べ物の判定</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="food_name">食べ物を入力してください:</label>
+        <input type="text" id="food_name" name="food_name" required value="{{ food_name|default:'' }}">
+        <button type="submit">判定する</button>
+    </form>
+</body>
+</html>
