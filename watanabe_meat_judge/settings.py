@@ -10,7 +10,8 @@ SECRET_KEY = 'your-secret-key'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['meat-or-not-production.up.railway.app', '127.0.0.1', 'localhost']
+
 
 # Application definition
 INSTALLED_APPS = [
