@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}渡辺さんのクイズ{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>渡辺さんの肉か肉じゃないか</h1>
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- 各ページの中身がここに入る -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>© 2025 渡辺クイズ製作委員会</p>
+    </footer>
+</body>
+</html>

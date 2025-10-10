@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渡辺さんの肉か肉じゃないか</title>
+</head>
+
+<body>
+{% extends "base.html" %}
+
+    {% block title %}問題ページ{% endblock %}
+
+{% block content %}
+    <div class="top-container">
+        <h1 class="title">🍖 渡辺さんの肉クイズ 🍗</h1>
+        <p class="desc">
+        渡辺さんは「鳥」が苦手。<br>
+        でも、食べられるお肉もあるらしい？<br>
+        あなたは見分けられるかな？
+        </p>
+        <a href="{% url 'judge:input' %}">クイズを始める</a>     
+    </div>
+</body>
+</html>
+{% csrf_token %}
+{% endblock %}         
