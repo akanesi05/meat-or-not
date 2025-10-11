@@ -4,15 +4,14 @@
 
 {% extends "base.html" %}
 
-{% block title %}判定結果{% endblock %}
-
 {% block content %}
-  <h2>結果</h2>
-  {% if correct %}
-    <p>✅ 正解！「{{ food_name }}」は食べられる！</p>
-  {% else %}
-    <p>❌ 残念！渡辺さんは「{{ food_name }}」が苦手です。</p>
-  {% endif %}
+<h2>結果</h2>
 
-  <a href="{% url 'judge:input' %}">▶ 次の問題へ</a>
+{% if correct %}
+  <p>✅ 正解！渡辺さんは「{{ food_name }}」が{{ correct_answer }}です！</p>
+{% else %}
+  <p>❌ 不正解！本当は{{ correct_answer }}です！</p>
+{% endif %}
+
+<a href="{% url 'judge:input' %}">▶ 次の問題へ</a>
 {% endblock %}
