@@ -11,7 +11,10 @@ SECRET_KEY = 'your-secret-key'
 DEBUG = True
 
 #ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app', '127.0.0.1', 'localhost']
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app',  # あなたのRailwayドメイン
+    'localhost',
+    '127.0.0.1',]
+
 
 
 
@@ -95,4 +98,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CSRF_TRUSTED_ORIGINS = ['https://meat-or-not-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = [
+    'https://meat-or-not-production-90cb.up.railway.app',  # あなたのRailwayドメイン
+]
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
