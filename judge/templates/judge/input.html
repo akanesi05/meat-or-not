@@ -11,13 +11,16 @@
     {% block title %}問題ページ{% endblock %}
 
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <label for="food_name"> {{ food }}は食べられると思いますか:</label>
-        <input type="hidden" name="food_name" value="{{ food }}">
-        <button type="submit" name="answer" value="yes">⭕️ 食べられる</button>
-        <button type="submit" name="answer" value="no">❌ 食べられない</button>
-    </form>
+    
+    <p>渡辺さんは「{{ food }}」が好きだと思いますか？</p>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="food_name" value="{{ food }}">
+    
+    <button type="submit" name="answer" value="好き">好きだと思う</button>
+    <button type="submit" name="answer" value="嫌い">嫌いだと思う</button>
+</form>
 </body>
 </html>
 {% csrf_token %}
