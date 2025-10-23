@@ -1,3 +1,5 @@
+from django.shortcuts import render, redirect
+import random
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import FoodItem
@@ -6,51 +8,51 @@ import random
 def top_view(request):
     return render(request, "top.html")
 
-print('あ')
 def input_view(request):
     like_foods = ["マヨネーズ", "マックのハンバーガー", "ソーセージ"]
-    dislike_foods = ["唐揚げ", "チキン南蛮", "焼き鳥","ハンバーグ", "牛丼", "豚カツ"]
-
+    dislike_foods = ["唐揚げ", "チキン南蛮", "焼き鳥", "ハンバーグ", "牛丼", "豚カツ","バーガーキングのハンバーガー"]
     all_foods = like_foods + dislike_foods
+
+    # --- セッション初期化 ---
+    if "questions" not in request.session:
+        # 10問ランダムで出題
+        questions = random.sample(all_foods, min(10, len(all_foods)))
+        request.session["questions"] = questions
+        request.session["current_index"] = 0
+        request.session["score"] = 0
+
+    questions = request.session["questions"]
+    index = request.session["current_index"]
+    score = request.session["score"]
+
+    # --- 全問終わったら結果へ ---
+    if index >= len(questions):
+        context = {"score": score, "total": len(questions)}
+        # セッションをクリア
+        for key in ["questions", "current_index", "score"]:
+            if key in request.session:
+                del request.session[key]
+        return render(request, "judge/result.html", context)
+
+    # --- 現在の問題 ---
+    food_name = questions[index]
+
+    # --- 回答処理 ---
     if request.method == "POST":
-        food_name = request.POST.get("food_name")
-        user_answer = request.POST.get("answer")  # "好き" or "嫌い"
-        
-        # 正解を取得
-        print(food_name)
-        if food_name in like_foods:
-            correct_answer = "好き"
-            
-        else:
-            correct_answer = "嫌い"
-        print(correct_answer)
-        # ユーザーが選んだ答えと正解を比較
-        correct = (user_answer == correct_answer)
-        print(user_answer)
-        print(correct)
-        return render(request, "judge/result.html", {
-            "food_name": food_name,
-            "correct": correct,
-            "correct_answer": correct_answer
-        })
- 
-    # 出題する食べ物をランダムに選ぶ
-    food = random.choice(all_foods)
-    return render(request, "judge/input.html", {"food": food})
+        user_answer = request.POST.get("answer")
+        correct_answer = "好き" if food_name in like_foods else "嫌い"
+        if user_answer == correct_answer:
+            request.session["score"] = score + 1
+        request.session["current_index"] = index + 1
+        return redirect("judge:input")
 
-def judge_watanabe(food_name, user_answer):
-    # 渡辺さんの食べ物データベース
-  
-    # 正解データを取得
-    correct_answer = foods.get(food_name)
-
-    # ユーザーの答え（yes/no）を True/False に変換
-    user_answer_bool = True if user_answer == "yes" else False
-
-    # 一致していれば正解！
-    return correct_answer == user_answer_bool
-
-
+    # --- 問題画面を表示 ---
+    context = {
+        "food": food_name,
+        "current": index + 1,
+        "total": len(questions),
+    }
+    return render(request, "judge/input.html", context)
 def result_view(request):
-    # 仮の実装。必要に応じて内容を変更してください。
-    return render(request, 'judge/result.html')
+    # This view is no longer needed as result is handled in input_view
+    return redirect("judge:input")

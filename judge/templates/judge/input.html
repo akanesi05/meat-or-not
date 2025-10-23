@@ -11,16 +11,15 @@
     {% block title %}問題ページ{% endblock %}
 
 {% block content %}
-    
-    <p>渡辺さんは「{{ food }}」が好きだと思いますか？</p>
+<h2>{{ current }}問目 / {{ total }}問</h2>
+<p>{{ food }} は渡辺さんにとって？</p>
 
 <form method="post">
-    {% csrf_token %}
-    <input type="hidden" name="food_name" value="{{ food }}">
-    
-    <button type="submit" name="answer" value="好き">好きだと思う</button>
-    <button type="submit" name="answer" value="嫌い">嫌いだと思う</button>
+  {% csrf_token %}
+  <button type="submit" name="answer" value="好き">好き</button>
+  <button type="submit" name="answer" value="嫌い">嫌い</button>
 </form>
+
 <a href="{% url 'judge:top' %}">▶ TOPへ</a>
 </body>
 </html>

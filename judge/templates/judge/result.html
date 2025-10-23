@@ -5,16 +5,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>結果</h2>
-
-{% if correct %}
-  <p>✅ 正解！渡辺さんは「{{ food_name }}」が{{ correct_answer }}です！</p>
-  <p>by渡辺</p>
-{% else %}
-  <p>❌ 不正解！本当は{{ correct_answer }}です！</p>
-  <p>by渡辺</p>
-{% endif %}
-
-<a href="{% url 'judge:input' %}">▶ 次の問題へ</a>
+<h2>結果発表🎉</h2>
+<p>あなたのスコア：{{ score }} / {{ total }}</p>
+<a href="{% url 'judge:input' %}">▶ もう一度挑戦</a>
 <a href="{% url 'judge:top' %}">▶ TOPへ</a>
 {% endblock %}
