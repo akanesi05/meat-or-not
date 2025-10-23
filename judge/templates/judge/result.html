@@ -9,8 +9,10 @@
 
 {% if correct %}
   <p>✅ 正解！渡辺さんは「{{ food_name }}」が{{ correct_answer }}です！</p>
+  <p>by渡辺</p>
 {% else %}
   <p>❌ 不正解！本当は{{ correct_answer }}です！</p>
+  <p>by渡辺</p>
 {% endif %}
 
 <a href="{% url 'judge:input' %}">▶ 次の問題へ</a>

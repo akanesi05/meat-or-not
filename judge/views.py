@@ -7,12 +7,6 @@ def top_view(request):
     return render(request, "top.html")
 
 print('あ')
-# def input_view(request):
-#     if request.method == 'POST':
-#         food_name = request.POST.get('food_name')
-#         is_meat = judge_meat(food_name)
-#         return render(request, 'judge/result.html', {'food_name': food_name, 'is_meat': is_meat})
-#     return render(request, 'judge/input.html')
 def input_view(request):
     like_foods = ["マヨネーズ", "マックのハンバーガー", "ソーセージ"]
     dislike_foods = ["唐揚げ", "チキン南蛮", "焼き鳥","ハンバーグ", "牛丼", "豚カツ"]
