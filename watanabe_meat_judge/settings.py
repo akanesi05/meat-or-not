@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'your-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app', '127.0.0.1', 'localhost']
 ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app',  # あなたのRailwayドメイン
@@ -37,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'watanabe_meat_judge.urls'
@@ -112,3 +113,4 @@ CSRF_TRUSTED_ORIGINS = [
     'https://meat-or-not-production-90cb.up.railway.app',  # あなたのRailwayドメイン
 ]
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
