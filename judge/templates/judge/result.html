@@ -7,6 +7,14 @@
 {% block content %}
 <h2>結果発表🎉</h2>
 <p>あなたのスコア：{{ score }} / {{ total }}</p>
+<a
+  href="https://twitter.com/intent/tweet?text={{ share_text|urlencode }}"
+  target="_blank"
+  rel="nofollow"
+  class="share-button"
+>
+  🐦 X（旧Twitter）で結果を共有
+</a>
 <a href="{% url 'judge:input' %}">▶ もう一度挑戦</a>
 <a href="{% url 'judge:top' %}">▶ TOPへ</a>
 {% endblock %}

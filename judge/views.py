@@ -28,6 +28,16 @@ def input_view(request):
     # --- 全問終わったら結果へ ---
     if index >= len(questions):
         context = {"score": score, "total": len(questions)}
+        score = request.session["score"]
+        total = len(questions)
+
+        share_text = f"私は {total}問中 {score}問 正解しました！ #渡邉肉 #meat_or_not"
+
+        context = {
+            "score": score,
+            "total": total,
+            "share_text": share_text,
+        }
         # セッションをクリア
         for key in ["questions", "current_index", "score"]:
             if key in request.session:
