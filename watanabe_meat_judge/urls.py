@@ -3,5 +3,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),  # ← 先に持ってくる！
     path('', include(('judge.urls', 'judge'), namespace='judge')),
 ]
+
+
