@@ -1,10 +1,23 @@
 {% load socialaccount %}
-<h2>ログイン</h2>
+{% load static %}
 
-{% for provider in socialaccount_providers %}
-  <a href="{% provider_login_url provider.id %}">
-    {{ provider.name }}でログイン
-  </a><br>
-{% empty %}
-  <p>Google設定が見つかりません。</p>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン</title>
+</head>
+<body>
+  <h2>ログイン</h2>
+
+  {% if user.is_authenticated %}
+    <p>{{ user.username }} でログイン中です。</p>
+    <a href="{% url 'account_logout' %}">ログアウト</a>
+  {% else %}
+    <a href="{% provider_login_url 'google' %}">
+      Googleでログイン
+    </a>
+  {% endif %}
+</body>
+</html>
+
