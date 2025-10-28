@@ -127,8 +127,9 @@ CSRF_TRUSTED_ORIGINS = [
     'https://meat-or-not-production-90cb.up.railway.app',  
 ]
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'  # 追加
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # 追加
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'  #本番環境用
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # 本番環境追加
+
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
