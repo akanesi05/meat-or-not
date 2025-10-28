@@ -11,13 +11,9 @@ SECRET_KEY = 'your-secret-key'
 DEBUG = True
 
 #ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app', '127.0.0.1', 'localhost']
-ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app',  # あなたのRailwayドメイン
+ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app', 
     'localhost',
     '127.0.0.1',]
-
-
-
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',              # ← これ必須
+    'django.contrib.sites',              
     'judge',  # Add your app here
     'allauth',
     'allauth.account',
@@ -36,12 +32,12 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',      # ← ここへ移動
+    'whitenoise.middleware.WhiteNoiseMiddleware',      
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'allauth.account.middleware.AccountMiddleware',    # ← この位置でOK
+    'allauth.account.middleware.AccountMiddleware',    
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -119,7 +115,7 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'judge' / 'static',  # ← この1行だけにする！
+    BASE_DIR / 'judge' / 'static',  
     
 ]
 
@@ -128,8 +124,14 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
-    'https://meat-or-not-production-90cb.up.railway.app',  # あなたのRailwayドメイン
+    'https://meat-or-not-production-90cb.up.railway.app',  
 ]
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'  #本番環境用
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # 本番環境追加
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
