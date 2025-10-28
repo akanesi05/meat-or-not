@@ -133,3 +133,6 @@ CSRF_TRUSTED_ORIGINS = [
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/input/'
+LOGOUT_REDIRECT_URL = '/'

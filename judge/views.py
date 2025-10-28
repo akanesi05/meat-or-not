@@ -3,11 +3,14 @@ import random
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import FoodItem
+from django.contrib.auth.decorators import login_required
+
 import random
 
 def top_view(request):
     return render(request, "top.html")
 
+@login_required
 def input_view(request):
     like_foods = ["マヨネーズ", "マックのハンバーガー", "ソーセージ"]
     dislike_foods = ["唐揚げ", "チキン南蛮", "焼き鳥", "ハンバーグ", "牛丼", "豚カツ","バーガーキングのハンバーガー"]
