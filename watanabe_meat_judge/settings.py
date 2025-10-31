@@ -138,3 +138,4 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/input/'
 LOGOUT_REDIRECT_URL = '/'
+
