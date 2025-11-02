@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load socialaccount %}
 
 {% block title %}問題ページ{% endblock %}
@@ -36,4 +37,7 @@
   </div>
 </button>
 </div>
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/top.js' %}"></script>
 {% endblock %}
