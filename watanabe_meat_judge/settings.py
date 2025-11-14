@@ -11,7 +11,7 @@ SECRET_KEY = 'your-secret-key'
 DEBUG = True
 
 #ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app', '127.0.0.1', 'localhost']
-ALLOWED_HOSTS = ['meat-or-not-production-90cb.up.railway.app', 
+ALLOWED_HOSTS = ['meat-or-not-production-db51.up.railway.app', 
     'localhost',
     '127.0.0.1',]
 # Application definition
