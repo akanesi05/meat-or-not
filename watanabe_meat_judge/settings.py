@@ -124,7 +124,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
-    'https://meat-or-not-production-90cb.up.railway.app',  
+    'https://meat-or-not-production-db51.up.railway.app', 
 ]
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'  #本番環境用
