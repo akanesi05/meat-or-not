@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Googleログイン | 渡辺さんの肉クイズ{% endblock %}
+
+{% block content %}
+
+<div class="top-container">
+  <h1 class="title">🔐 Googleでログイン</h1>
+
+  <p class="desc">
+    Googleアカウントを使って<br>
+    ログインします。よろしいですか？
+  </p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="start-btn">
+      続ける 🍖
+    </button>
+  </form>
+
+  <a href="/" style="display:block; margin-top:14px; font-size:13px; color:#999;">
+    トップに戻る
+  </a>
+</div>
+
+{% endblock %}
