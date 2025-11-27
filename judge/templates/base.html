@@ -5,13 +5,20 @@
     <meta charset="UTF-8">
     <title>{% block title %}渡辺さんのクイズ{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'top.css' %}">
 
 </head>
+
 <body>
-    <header>
-        <h1>渡辺さんの肉か肉じゃないか</h1>
-        <hr>
-    </header>
+      <header class="app-header">
+    <div class="header-inner">
+      <span class="app-logo">🍖 肉クイズ</span>
+      <nav class="header-nav">
+        <a href="/">トップ</a>
+        <a href="{% url 'judge:input' %}">クイズ</a>
+      </nav>
+    </div>
+  </header>
 
     <main>
         {% block content %}
@@ -19,9 +26,9 @@
         {% endblock %}
     </main>
 
-    <footer>
-        <hr>
-        <p>© 2025 渡辺クイズ製作委員会</p>
+    <footer class="app-footer">
+        <p>© 2025 渡辺さんの肉クイズ</p>
+        <p class="footer-sub">Made with 🍖 & Django</p>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     {% block script %}{% endblock %}
